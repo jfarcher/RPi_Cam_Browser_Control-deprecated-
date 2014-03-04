@@ -55,7 +55,8 @@ Temporarily start/stop and deinstallation: Navigate back to the git repository. 
 
 If you want to remove the interface completely, run "./RPi_Cam_Browser_Control_Installer.sh remove". Attention: It removes all files in /var/www.
 
-Source Code: After installation, the source code for the installer is where you downloaded it, the source code for the interface itself is in /var/www and the source code for the autostart is in /etc/rc.local. The whole project is based on my other project called RaspiMJPEG, more information here: viewtopic.php?f=43&t=61771 , source code here: https://github.com/silvanmelchior/userl ... spiMJPEG.c
+Source Code: After installation, the source code for the installer is where you cloned, the source code for the interface itself is in www and the source code for the autostart is in etc/rc.local. The whole project is based on Silvans other project called RaspiMJPEG, more information here: http://www.raspberrypi.org/phpBB3/viewtopic.php?f=43&t=61771 , source code here: 
+https://github.com/silvanmelchior/userland/blob/master/host_applications/linux/apps/raspicam/RaspiMJPEG.c
 
 Embed in own homepage: If you want to add the live-preview to your homepage, here are the instructions:
 - Navigate to /var/www
