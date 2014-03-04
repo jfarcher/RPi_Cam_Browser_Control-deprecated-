@@ -29,7 +29,7 @@
 # Copyright retained by Silvan Melchior but this has been heavily modified to work in a git repository
 case "$1" in
   update)
-	cat www/Version.txt
+	echo "Current version `cat www/Version.txt`"
 	git pull
 	echo "updated to `cat www/Version.txt`"
 	;;
