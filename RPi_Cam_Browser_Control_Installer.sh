@@ -34,74 +34,58 @@ case "$1" in
         sudo apt-get autoremove -y
 
         sudo rm -r /var/www/*
-        sudo rm /usr/bin/raspimjpeg
-        sudo rm /opt/vc/bin/raspimjpeg
-
-        cd /etc
-        sudo wget -N http://grustu.ch/share/rpi_cam/rc_local_std/rc.local
-        sudo chmod 755 rc.local
+        sudo rm /usr/local/sbin/raspimjpeg
+        sudo cp -r etc/rc_local_std/rc.local /etc/
+        sudo chmod 755 /etc/rc.local
 
         echo "Removed everything"
         ;;
 
   autostart_run)
-        cd /etc
-        sudo wget -N http://grustu.ch/share/rpi_cam/rc_local_run/rc.local
-        sudo chmod 755 rc.local
+        sudo cp -r etc/rc_local_run/rc.local /etc/
+        sudo chmod 755 /etc/rc.local
         echo "Changed autostart"
         ;;
 
   autostart_idle)
-        cd /etc
-        sudo wget -N http://grustu.ch/share/rpi_cam/rc_local_idle/rc.local
-        sudo chmod 755 rc.local
+        sudo cp -r  etc/rc_local_idle/rc.local /etc/
+        sudo chmod 755 /etc/rc.local
         echo "Changed autostart"
         ;;
 
   autostart_md)
-        cd /etc
-        sudo wget -N http://grustu.ch/share/rpi_cam/rc_local_md/rc.local
-        sudo chmod 755 rc.local
+        sudo cp -r  etc/rc_local_md/rc.local /etc/
+        sudo chmod 755 /etc/rc.local
         echo "Changed autostart"
         ;;
 
   autostart_no)
-        cd /etc
-        sudo wget -N http://grustu.ch/share/rpi_cam/rc_local_std/rc.local
-        sudo chmod 755 rc.local
+        sudo cp -r  etc/rc_local_std/rc.local /etc/
+        sudo chmod 755 /etc/rc.local
         echo "Changed autostart"
         ;;
 
   install)
         sudo apt-get install -y apache2 php5 libapache2-mod-php5 gpac motion
+	sudo rm -rf /var/www
+	sudo cp -r www /var/        
+	
+        sudo chown -R www-data:www-data /var/www
+        sudo mknod /var/www/FIFO p
+        sudo chmod 666 /var/www/FIFO
+        sudo cp -r etc/apache2/sites-available/default /etc/apache2/sites-available/
+        sudo chmod 644 /etc/apache2/sites-available/default
+        sudo cp etc/apache2/conf.d/other-vhosts-access-log /etc/apache2/conf.d/other-vhosts-access-log
+        sudo chmod 644 /etc/apache2/conf.d/other-vhosts-access-log
 
-        cd /var/www
-        sudo wget -N http://grustu.ch/share/rpi_cam/www.tar.gz
-        sudo tar -xvzf www.tar.gz -C .
-        sudo rm www.tar.gz
-        sudo mknod FIFO p
-        sudo chmod 666 FIFO
-        sudo chown www-data:www-data media
-        
-        cd /etc/apache2/sites-available
-        sudo wget -N http://grustu.ch/share/rpi_cam/default
-        sudo chmod 644 default
-        cd /etc/apache2/conf.d
-        sudo wget -N http://grustu.ch/share/rpi_cam/other-vhosts-access-log
-        sudo chmod 644 other-vhosts-access-log
+        sudo cp -r bin/raspimjpeg /usr/local/sbin/
+        sudo chmod 755 /usr/local/sbin/raspimjpeg
 
-        cd /opt/vc/bin
-        sudo wget -N http://grustu.ch/share/rpi_cam/raspimjpeg
-        sudo chmod 755 raspimjpeg
-        sudo ln -s /opt/vc/bin/raspimjpeg /usr/bin/raspimjpeg
+        sudo cp -r etc/rc_local_run/rc.local /etc/
+        sudo chmod 755 /etc/rc.local
 
-        cd /etc
-        sudo wget -N http://grustu.ch/share/rpi_cam/rc_local_run/rc.local
-        sudo chmod 755 rc.local
-
-        cd /etc/motion
-        sudo wget -N http://grustu.ch/share/rpi_cam/motion.conf
-        sudo chmod 640 motion.conf
+	sudo cp -r etc/motion/motion.conf /etc/motion/
+        sudo chmod 640 /etc/motion/motion.conf
 
         echo "Installer finished"
         ;;
