@@ -30,7 +30,7 @@
 case "$1" in
   update)
 	echo "Current version `cat www/Version.txt`"
-	git pull
+	git pull origin master
 	echo "updated to `cat www/Version.txt`"
 	;;
   remove)
