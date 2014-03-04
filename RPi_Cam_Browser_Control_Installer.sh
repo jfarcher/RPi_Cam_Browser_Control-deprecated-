@@ -28,6 +28,11 @@
 #
 # Copyright retained by Silvan Melchior but this has been heavily modified to work in a git repository
 case "$1" in
+  update)
+	cat www/Version.txt
+	git pull
+	echo "updated to `cat www/Version.txt`"
+	;;
   remove)
         sudo killall raspimjpeg
         sudo apt-get remove -y apache2 php5 libapache2-mod-php5 gpac motion
@@ -66,8 +71,6 @@ case "$1" in
         ;;
 
   install)
-	# Make sure we have the latest code
-	git pull
         sudo apt-get install -y apache2 php5 libapache2-mod-php5 gpac motion
 
 	sudo rm -rf /var/www
