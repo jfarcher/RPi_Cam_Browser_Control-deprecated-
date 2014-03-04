@@ -11,10 +11,13 @@ I believe this is a better way of hosting the project and also am going to look 
 Installation
 ============
 On a clean Raspbian image with a camera attached
+
 Run through the following steps to update the OS and firmware:
 
 sudo apt-get update
+
 sudo apt-get dist-upgrade
+
 sudo rpi-update
 
 
@@ -29,9 +32,13 @@ cd RPi_Cam_Browser_Control
 This will run through a process of installing various packages and copying files into their relevant locations.
 
 Once this has completed you have a few options:
+
 ./RPi_Cam_Browser_Control_Installer.sh autostart_run --> the interface starts at startup and takes control over the camera (standard)
+
 ./RPi_Cam_Browser_Control_Installer.sh autostart_md --> the interface starts at startup with motion detection activated
+
 ./RPi_Cam_Browser_Control_Installer.sh autostart_idle --> the interface starts at startup, but waits until you push the button "start camera" on the website to take control over the camera
+
 ./RPi_Cam_Browser_Control_Installer.sh autostart_no --> the interface doesn't start at startup, you need to run a command to use it (commands below) 
 
 Reboot your Pi
@@ -44,7 +51,8 @@ Browser Compatiblity: Internet Explorer isn't supported, Opera and Firefox <21 c
 
 Motion Detection: To configure motion detection, edit /etc/motion/motion.conf. Motion detection is not active while the old video is converted to mp4. To prevent this, stop boxing the h264-video after recording by removing the -p parameter for raspimjpeg in /etc/rc.local and restart your RPi.
 
-Temporarily start/stop and deinstallation: Navigate back to the directory, where you downloaded the installer in Step 4. If you want to stop the interface temporarily, run "./RPi_Cam_Browser_Control_Installer.sh stop". To restart it, run "./RPi_Cam_Browser_Control_Installer.sh start".
+Temporarily start/stop and deinstallation: Navigate back to the git repository. If you want to stop the interface temporarily, run "./RPi_Cam_Browser_Control_Installer.sh stop". To restart it, run "./RPi_Cam_Browser_Control_Installer.sh start".
+
 If you want to remove the interface completely, run "./RPi_Cam_Browser_Control_Installer.sh remove". Attention: It removes all files in /var/www.
 
 Source Code: After installation, the source code for the installer is where you downloaded it, the source code for the interface itself is in /var/www and the source code for the autostart is in /etc/rc.local. The whole project is based on my other project called RaspiMJPEG, more information here: viewtopic.php?f=43&t=61771 , source code here: https://github.com/silvanmelchior/userl ... spiMJPEG.c
