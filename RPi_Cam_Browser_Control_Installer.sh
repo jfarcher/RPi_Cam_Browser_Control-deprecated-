@@ -92,7 +92,6 @@ case "$1" in
 
 	sudo cp -r etc/motion/motion.conf /etc/motion/
         sudo chmod 640 /etc/motion/motion.conf
-        sudo echo "start_motion_daemon=yes" > /etc/default/motion
 
         echo "Installer finished"
         ;;
