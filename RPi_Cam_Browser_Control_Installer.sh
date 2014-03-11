@@ -84,8 +84,9 @@ case "$1" in
         sudo cp etc/apache2/conf.d/other-vhosts-access-log /etc/apache2/conf.d/other-vhosts-access-log
         sudo chmod 644 /etc/apache2/conf.d/other-vhosts-access-log
 
-        sudo cp -r bin/raspimjpeg /usr/local/sbin/
-        sudo chmod 755 /usr/local/sbin/raspimjpeg
+        sudo cp -r bin/raspimjpeg /opt/vc/bin/
+        sudo chmod 755 /opt/vc/bin/raspimjpeg
+        sudo ln -s /opt/vc/bin/raspimjpeg /usr/bin/raspimjpeg
 
         sudo cp -r etc/rc_local_run/rc.local /etc/
         sudo chmod 755 /etc/rc.local
