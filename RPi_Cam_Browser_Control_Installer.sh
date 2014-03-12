@@ -75,7 +75,7 @@ case "$1" in
 
 	sudo rm -rf /var/www
 	sudo cp -r www /var/        
-	
+	sudo mkdir /var/www/media	
         sudo chown -R www-data:www-data /var/www
         sudo mknod /var/www/FIFO p
         sudo chmod 666 /var/www/FIFO
