@@ -1,3 +1,9 @@
+NOTE
+====
+This repo is no longer the origin, Silvan has cloned and reuploaded a copy under his account so he can be in control which is what I originally wanted. You can find my fork of the origin at https://github.com/jfarcher/RPi_Cam_Web_Interface
+
+All my work will go in this repo, and will have pull requests sent to his repo. This repo will remain for reference only.
+
 
 RPi_Cam_Browser_Control
 =======================
